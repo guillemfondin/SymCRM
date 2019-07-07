@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "Simplon Mono Medium";
+    src: url("../../fonts/Simplon/simplon-mono-medium.ttf");
+  }
+  
+  @font-face {
+    font-family: "Simplon Mono Regular";
+    src: url("../../fonts/Simplon/simplon-mono-regular.ttf");
+  }
+  
+  @font-face {
+    font-family: "Simplon Norm";
+    src: url("../../fonts/Simplon/simplon-normal-light.ttf");
+  }
+  
+  @font-face {
+    font-family: "Helvetica";
+    src: url("../../fonts/Helvetica_LT_Std/HelveticaLTStd-Cond.otf");
+  }
+  
+  @font-face {
+    font-family: "Helvetica Black";
+    src: url("../../fonts/Helvetica_LT_Std/HelveticaLTStd-BlkCond.otf");
+  }
+  
+  @mixin simplon-mono {
+    font-family: "Simplon Mono", "Helvetica", sans-serif;
+    letter-spacing: .86px;
+    line-height: 1;
+    padding-top: 12px;
+  }
+  
+  .text-simplon-mono {
+    font-family: "Simplon Mono Medium", sans-serif;
+  }
+  
+  .text-simplon-mono-reg {
+    font-family: "Simplon Mono Regular", sans-serif;
+  }
+  
+  .text-simplon-norm {
+    font-family: "Simplon Norm", sans-serif;
+  }
+  
+  .text-helvetica {
+    font-family: "Helvetica", sans-serif;
+  }
+  
+  .text-helvetica-bold {
+    font-family: "Helvetica Black", sans-serif;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include simplon-mono;
+  }
+  
+  .link-danger {
+    color: $danger;
+    font-family: "Simplon Mono Medium", sans-serif;
+    &:hover {
+      color: $danger;
+    }
+  }
+  
