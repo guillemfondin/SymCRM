@@ -1,16 +1,17 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import InvoicesAPI from '../services/InvoicesAPI';
 
 const STATUS_CLASSES = {
-    PAYED: "success",
+    PAID: "success",
     SENT: "primary text-light",
     CANCELLED: "danger"
 };
 
 const STATUS_LABELS = {
-    PAYED: "Payée",
+    PAID: "Payée",
     SENT: "Envoyée",
     CANCELLED: "Annulée"
 };
@@ -98,7 +99,10 @@ const InvoicesPage = (props) => {
 
     return (
     <>
-        <h1>Liste des factures</h1>
+        <div className="d-flex justify-content-between align-items-center mb-3">
+            <h1>Liste des factures</h1>
+            <Link to="/invoices/new" className="btn btn-success">Nouvelle facture</Link>
+        </div>
 
         <div className="form-group">
             <input type="text" onChange={handleSearch} value={search} className="form-control" placeholder="Rechercher"/>
@@ -128,7 +132,7 @@ const InvoicesPage = (props) => {
                         </td>
                         <td className="text-center">{invoice.amount.toLocaleString()} €</td>
                         <td>
-                            <button className="btn btn-sm btn-primary mr-1 text-white">Éditer</button>
+                            <Link to={"/invoices/" + invoice.id} className="btn btn-sm btn-primary mr-1 text-white">Éditer</Link>
                             <button className="btn btn-sm btn-danger" onClick={() => handleDelete(invoice.id)}>Supprimer</button>
                         </td>
                     </tr>

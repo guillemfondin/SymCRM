@@ -9,6 +9,9 @@ import HomePage from './pages/HomePage';
 import InvoicesPage from './pages/InvoicesPage';
 import LoginPage from './pages/LoginPage';
 import AuthAPI from './services/AuthAPI';
+import CustomerPage from './pages/CustomerPage';
+import InvoicePage from './pages/InvoicePage';
+import RegisterPage from './pages/RegisterPage';
 // import CustomersPageWithPagination from './pages/CustomersPageWithPagination';
 
 /*
@@ -45,10 +48,13 @@ const App = () => {
                 <NavbarWithRouter />
                 <main className="container pt-5">
                     <Switch>
+                        <PrivateRoute path="/customers/:id" component={CustomerPage} />
                         <PrivateRoute path="/customers" component={CustomersPage} />
+                        <PrivateRoute path="/invoices/:id" component={InvoicePage} />
                         <PrivateRoute path="/invoices" component={InvoicesPage} />
                         {/* <Route path="/customers" component={CustomersPageWithPagination} /> */}
                         <Route path="/login" component={LoginPage} />
+                        <Route path="/register" component={RegisterPage} />
                         <Route path="/" component={HomePage} />
                     </Switch>
                 </main>

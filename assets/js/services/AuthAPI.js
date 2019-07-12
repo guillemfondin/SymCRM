@@ -9,6 +9,11 @@ function logout() {
     delete axios.defaults.headers["Authorization"];
 }
 
+function create(user) {
+    return axios.post("http://symcrm:8888/api/users", user)
+                .then(response => response.data);
+}
+
 /**
  * Requête HTTP d'auth et stockage du token dans le local storage en local
  * 
@@ -61,6 +66,7 @@ function setup() {
 
 export default {
     authenticate,
+    create,
     logout,
     isAuthenticated,
     setup
