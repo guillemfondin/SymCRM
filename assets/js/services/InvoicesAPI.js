@@ -1,27 +1,28 @@
 import axios from 'axios';
+import { INVOICES_API } from '../config';
 
 function findAll() {
-    return axios.get("http://symcrm:8888/api/invoices")
+    return axios.get(INVOICES_API)
                 .then(response => response.data['hydra:member'])
     ;
 }
 
 function findOneById(id) {
-    return axios.get("http://symcrm:8888/api/invoices/" + id)
+    return axios.get(INVOICES_API + "/" + id)
                 .then(response => response.data);
 
 }
 
 function create(invoice) {
-    return axios.post("http://symcrm:8888/api/invoices", {...invoice, customer: `/api/customers/${invoice.customer}`});
+    return axios.post(INVOICES_API, {...invoice, customer: `/api/customers/${invoice.customer}`});
 }
 
 function update(id, invoice) {
-    return axios.put("http://symcrm:8888/api/invoices/" + id, {...invoice, customer: `/api/customers/${invoice.customer}`});
+    return axios.put(INVOICES_API + "/" + id, {...invoice, customer: `/api/customers/${invoice.customer}`});
 }
 
 function deleteInvoice(id) {
-    return axios.delete("http://symcrm:8888/api/invoices/" + id);
+    return axios.delete(INVOICES_API + "/" + id);
 }
 
 export default {

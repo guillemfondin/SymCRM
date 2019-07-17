@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { USERS_API, LOGIN_API } from '../config';
 
 /**
  * Suppression du token du local storage et sur axios
@@ -10,7 +11,7 @@ function logout() {
 }
 
 function create(user) {
-    return axios.post("http://symcrm:8888/api/users", user)
+    return axios.post(USERS_API, user)
                 .then(response => response.data);
 }
 
@@ -20,7 +21,7 @@ function create(user) {
  * @param {object} credentials 
  */
 function authenticate(credentials) {
-    return axios.post("http://symcrm:8888/api/login_check", credentials)
+    return axios.post(LOGIN_API, credentials)
                              .then(response => response.data.token)
                              .then(token => {
                                  window.localStorage.setItem("authToken", token);
