@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Field from '../components/forms/Field';
 import AuthAPI from '../services/AuthAPI';
+import { toast } from 'react-toastify';
 
 const RegisterPage = ({history}) => {
     const [user, setUser] = useState({
@@ -43,12 +44,14 @@ const RegisterPage = ({history}) => {
         if (user.password !== user.passwordConfirm) {
             apiErrors.passwordConfirm = "Votre mot de passe ne correspond pas";
             setErrors(apiErrors);
+            toast.error("Votre formulaire ne semble pas correcte");
             return;
         }
 
         try {
             await AuthAPI.create(user);
             setErrors({});
+            toast.success("Vous êtes maintenant inscrit, connectez vous !");
             history.replace('/login');
         } catch ({ response }) {
             const { violations } = response.data;
@@ -59,6 +62,7 @@ const RegisterPage = ({history}) => {
                 });
                 setErrors(apiErrors);
             }
+            toast.error("Votre formulaire ne semble pas correcte");
         }
     }
 

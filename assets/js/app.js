@@ -12,6 +12,8 @@ import AuthAPI from './services/AuthAPI';
 import CustomerPage from './pages/CustomerPage';
 import InvoicePage from './pages/InvoicePage';
 import RegisterPage from './pages/RegisterPage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import CustomersPageWithPagination from './pages/CustomersPageWithPagination';
 
 /*
@@ -25,7 +27,7 @@ import RegisterPage from './pages/RegisterPage';
 require('../scss/main.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-const $ = require('jquery');
+require('jquery');
 
 require('popper.js');
 require('bootstrap');
@@ -59,6 +61,7 @@ const App = () => {
                     </Switch>
                 </main>
             </HashRouter>
+            <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
         </AuthContext.Provider>
     );
 }
